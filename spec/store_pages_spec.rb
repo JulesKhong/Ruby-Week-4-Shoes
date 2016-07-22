@@ -24,3 +24,28 @@ describe('list all stores', {:type => :feature}) do
     expect(page).to have_content('Swift')
   end
 end
+
+describe('updates store names', {:type => :feature}) do
+  it "updates the name of a store" do
+    visit('/')
+    fill_in('store_name', :with => 'Oddball')
+    fill_in('store_location', :with => 'Portland, OR')
+    click_button('Add store')
+    click_link('Oddball')
+    fill_in('name_new', :with => 'Goofball')
+    click_button('Update name')
+    expect(page).to have_content('Goofball')
+  end
+end
+
+describe('deleting a store', {:type => :feature}) do
+  it "deletes a store from the database" do
+    visit('/')
+    fill_in('store_name', :with => 'Oddball')
+    fill_in('store_location', :with => 'Portland, OR')
+    click_button('Add store')
+    click_link('Oddball')
+    click_button('Permanently close store')
+    expect(page).to have_no_content('Oddball')
+  end
+end

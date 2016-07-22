@@ -27,9 +27,8 @@
     <hr>
 <!-- DELETE A STORE -->
     <h4>Close a store</h4>
-    <form class="form-group" action="/store/delete" method="post">
+    <form class="form-group" action="/delete" method="post">
       <input type="hidden" name="_method" value="delete">
-      <label for="store_delete">Store</label>
       <select class="form-control" name="store_delete">
         <% if @stores.any? %>
           <% @stores.each do |store| %>
@@ -68,7 +67,6 @@
     <h4>Delete a brand</h4>
     <form class="form-group" action="/brand/delete" method="post">
       <input type="hidden" name="_method" value="delete">
-      <label for="store_delete">Drop a brand from all stores</label>
       <select class="form-control" name="brand_delete">
         <% if @brands.any? %>
           <% @brands.each do |brand| %>

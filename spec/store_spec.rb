@@ -11,7 +11,7 @@ describe(Store) do
   end
 
   it "capitalizes a name" do
-    store = Store.create({:name => "oddball"})
-    expect(store.name).to(eq("Oddball"))
+    store = Store.create({:name => "golfball", :location => "Paris"})
+    expect(store.name).to(eq("Golfball"))
   end
 end

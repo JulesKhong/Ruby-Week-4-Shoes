@@ -21,6 +21,13 @@ describe('list all brands', {:type => :feature}) do
   end
 end
 
-# UPDATE
-
-# DELETE
+describe('deleting a brand', {:type => :feature}) do
+  it "deletes a brand from the database" do
+    visit('/')
+    fill_in('brand_name', :with => 'Reebok')
+    click_button('Add brand')
+    select('Reebok', :from => "brand_delete")
+    click_button('Permanently drop brand')
+    expect(page).to have_no_content('Reebok')
+  end
+end

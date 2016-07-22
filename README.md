@@ -11,14 +11,6 @@ This site allows an admin to view, add, update and delete shoe stores, and brand
 
 * The site can be found [here](https://github.com/JuliaDickey/Ruby-Week-4-Shoes) on GitHub
 * Clone the github repository to view source files.
-* Launch postgres and build the necessary databases with the following commands:
-postgres
-psql
-CREATE DATABASE hair_salon;
-\c hair_salon;
-CREATE TABLE clients (id serial PRIMARY KEY, name varchar, describe text, stylist_id int);
-CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
-CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
 
 ## Known Bugs
 
