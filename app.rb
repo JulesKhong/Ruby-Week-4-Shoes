@@ -8,3 +8,11 @@ get('/') do
   @brands = Brand.all
   erb(:index)
 end
+
+post('/store/add') do
+  name = params.fetch('store_name')
+  location = params.fetch('store_location')
+  store = Store.new({:name => name, :location => location})
+  store.save
+  redirect to("/")
+end

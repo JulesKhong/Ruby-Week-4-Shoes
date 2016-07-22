@@ -10,10 +10,11 @@
     </ul>
     <% else %>
     <p>
-      There are no stores on record.
+      There are no stores on record. <a href="/store/add">Add one</a>
     </p>
     <% end %>
 <!-- LIST OF BRANDS -->
+  <h3>Brands</h3>
     <% if @brands.any?() %>
     <ul>
       <% @brands.each do |brand| %>
@@ -25,6 +26,24 @@
       There are no brands on record.
     </p>
     <% end %>
+<hr>
+<!-- ADD A STORE -->
+  <h4>Add a store</h4>
+  <form class="form-group" action="/store/add" method="post">
+    <label for="store_name">Name</label>
+    <input class="form-control" type="text" name="store_name">
+    <label for="store_location">Location</label>
+    <input class="form-control" type="text" name="store_location">
+    <button class="btn btn-default" type="submit">Add store</button>
+  </form>
+  <hr>
+  <h4>Add a brand</h4>
+  <form class="form-group" action="/brand/add" method="post">
+    <label for="brand_name">Name</label>
+    <input class="form-control" type="text" name="brand_name">
+    <button class="btn btn-default" type="submit">Add brand</button>
+  </form>
+
   </div>
 <div class="row">
   <div class="col-sm-4">
