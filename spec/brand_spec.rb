@@ -19,4 +19,8 @@ describe(Brand) do
     store1.brands.push(brand)
     expect(brand.stores).to(eq([store1]))
   end
+  it "capitalizes a name" do
+    brand = Brand.create({:name => "sneakerz"})
+    expect(brand.name).to(eq("Sneakerz"))
+  end
 end

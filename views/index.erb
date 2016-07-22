@@ -10,15 +10,43 @@
     </ul>
     <% else %>
     <p>
-      There are no stores on record. <a href="/store/add">Add one</a>
+      There are no stores on record.
     </p>
     <% end %>
+
+    <hr>
+<!-- ADD A STORE -->
+    <h4>Add a store</h4>
+    <form class="form-group" action="/store/add" method="post">
+      <label for="store_name">Name</label>
+      <input class="form-control" type="text" name="store_name">
+      <label for="store_location">Location</label>
+      <input class="form-control" type="text" name="store_location">
+      <button class="btn btn-default" type="submit">Add store</button>
+    </form>
+    <hr>
+<!-- DELETE A STORE -->
+    <h4>Close a store</h4>
+    <form class="form-group" action="/store/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <label for="store_delete">Store</label>
+      <select class="form-control" name="store_delete">
+        <% if @stores.any? %>
+          <% @stores.each do |store| %>
+          <option value="<%= store.id %>"><%= store.name %>: <%= store.location %></option>
+          <% end %>
+        <% end %>
+      </select>
+      <button type="submit" class="btn btn-danger">Permanently close store</button>
+    </form>
+  </div>
 <!-- LIST OF BRANDS -->
-  <h3>Brands</h3>
+  <div class="col-sm-4">
+    <h3>Brands</h3>
     <% if @brands.any?() %>
     <ul>
       <% @brands.each do |brand| %>
-      <li><a href="/brand/<%= brand.id %>"><%= brand.name %></a></li>
+      <li><%= brand.name %></li>
       <% end %>
     </ul>
     <% else %>
@@ -26,32 +54,28 @@
       There are no brands on record.
     </p>
     <% end %>
-<hr>
-<!-- ADD A STORE -->
-  <h4>Add a store</h4>
-  <form class="form-group" action="/store/add" method="post">
-    <label for="store_name">Name</label>
-    <input class="form-control" type="text" name="store_name">
-    <label for="store_location">Location</label>
-    <input class="form-control" type="text" name="store_location">
-    <button class="btn btn-default" type="submit">Add store</button>
-  </form>
-  <hr>
+    <hr>
+
 <!-- ADD A BRAND -->
-  <h4>Add a brand</h4>
-  <form class="form-group" action="/brand/add" method="post">
-    <label for="brand_name">Name</label>
-    <input class="form-control" type="text" name="brand_name">
-    <button class="btn btn-default" type="submit">Add brand</button>
-  </form>
-
+    <h4>Add a brand</h4>
+    <form class="form-group" action="/brand/add" method="post">
+      <label for="brand_name">Name</label>
+      <input class="form-control" type="text" name="brand_name">
+      <button class="btn btn-default" type="submit">Add brand</button>
+    </form>
+    <hr>
+<!-- DELETE A BRAND -->
+    <h4>Delete a brand</h4>
+    <form class="form-group" action="/brand/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <label for="store_delete">Drop a brand from all stores</label>
+      <select class="form-control" name="brand_delete">
+        <% if @brands.any? %>
+          <% @brands.each do |brand| %>
+          <option value="<%= brand.id %>"><%= brand.name %></option>
+          <% end %>
+        <% end %>
+      </select>
+      <button type="submit" class="btn btn-danger">Permanently drop brand</button>
+    </form>
   </div>
-<div class="row">
-  <div class="col-sm-4">
-
-  </div>
-<div class="row">
-  <div class="col-sm-4">
-
-  </div>
-</div>
