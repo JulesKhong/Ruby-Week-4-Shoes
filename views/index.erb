@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-sm-4">
+<!-- LIST OF STORES -->
+    <h3>Stores</h3>
+    <% if @stores.any?() %>
+    <ul>
+      <% @stores.each() do |store| %>
+      <li><a href="/store/<%= store.id %>"><%= store.name %></a></li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>
+      There are no stores on record.
+    </p>
+    <% end %>
+<!-- LIST OF BRANDS -->
+    <% if @brands.any?() %>
+    <ul>
+      <% @brands.each do |brand| %>
+      <li><a href="/brand/<%= brand.id %>"><%= brand.name %></a></li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>
+      There are no brands on record.
+    </p>
+    <% end %>
+  </div>
+<div class="row">
+  <div class="col-sm-4">
+
+  </div>
+<div class="row">
+  <div class="col-sm-4">
+
+  </div>
+</div>
