@@ -49,3 +49,20 @@ describe('deleting a store', {:type => :feature}) do
     expect(page).to have_no_content('Oddball')
   end
 end
+
+describe('listing brands belonging to a store', {:type => :feature}) do
+  it "lists brands belonging to a store" do
+    visit('/')
+    fill_in('store_name', :with => 'Oddball')
+    fill_in('store_location', :with => 'Portland, OR')
+    click_button('Add store')
+    fill_in('brand_name', :with => 'Reebok')
+    click_button('Add brand')
+    fill_in('brand_name', :with => 'Nike')
+    click_button('Add brand')
+    click_link('Oddball')
+    select('Reebok', :from => 'brand_add')
+    click_button('Add brand')
+    expect(page).to have_content('Reebok')
+  end
+end
